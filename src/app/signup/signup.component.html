@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s5">
+              <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="signupservice.selectedsignup._id">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="name" #name="ngModel" [(ngModel)]="signupservice.selectedsignup.name" placeholder="Enter full name" required>
+                    <label>Name :
+                      <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="username" #name="ngModel" [(ngModel)]="signupservice.selectedsignup.username" placeholder="Username">
+                    <label>Username :
+                        <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="email" #name="ngModel" [(ngModel)]="signupservice.selectedsignup.email" placeholder="Email">
+                    <label>Email :
+                        <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="password" #name="ngModel" [(ngModel)]="signupservice.selectedsignup.password" placeholder="password">
+                    <label>Password :
+                        <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <button class="btn btn-custom right" type="button" (click)="resetForm(signupForm)">Reset</button>
+                    <button class="btn btn-custom right" type="submit" [disabled]="!signupForm.valid">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col s7">
+                <table class="responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let sig of signupservice.signup">
+                      <td>{{sig.name}}</td>
+                      <td>{{sig.username}}</td>
+                      <td>{{sig.email}}</td>
+                      <td>
+                          <a class="action-btn" (click)="onEdit(sig)">
+                            <i class="material-icons">edit</i>
+                          </a>
+                          <a class="action-btn" (click)="onDelete(sig._id,signupForm)">
+                            <i class="material-icons">delete</i>
+                          </a>
+                        </td>
+                    </tr>
+                  </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
